@@ -1,6 +1,6 @@
 resource "aws_dynamodb_table" "example" {
   name           = "cache-table"
-  billing_mode   = "PAY_PER_REQUEST"
+  billing_mode   = "PROVISIONED"
   hash_key       = "id"
   attribute {
     name = "id"
