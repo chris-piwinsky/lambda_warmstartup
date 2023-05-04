@@ -9,6 +9,14 @@ async function isEmptyObject(obj) {
   return Object.keys(obj).length === 0;
 }
 
+async function getTTL() {
+  //calculate ttl time 
+  let date = new Date()
+  //set ttl to 6 months from current date. records will expire after 6 months. 
+  let ttl_date = new Date(date.setMonth(date.getMonth()+6));
+  return Math.floor(ttl_date.getTime() / 1000).toString();
+}
+
 async function getFromCache(id) {
   let results = await checkDynamo(id);
   console.log("CHECK DYNAMO RESULTS: " + JSON.stringify(results));
@@ -40,10 +48,12 @@ async function checkDynamo(id) {
 
 async function insertToDynamo(payload) {
   try {
+    let ttl = await getTTL();
     const params = {
       TableName: "cache-table",
       Item: {
         id: payload.id,
+        ttl: ttl,
         payload: payload,
       },
     };

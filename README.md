@@ -33,3 +33,4 @@ Before you begin, make sure you have the following prerequisites:
 
 * [Terraform Documentation](https://developer.hashicorp.com/terraform/docs)
 * [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+* [Time To Live Dynamo](http://i-cloudconsulting.com/aws-dynamodb-ttl-setting-up-grammatically/)
