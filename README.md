@@ -27,7 +27,7 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Cache Flowchart
 
-![logicflow](documenation/FlowDiagram.png)
+![logicflow](./documentation/FlowDiagram.png)
 
 ## Resources
 
