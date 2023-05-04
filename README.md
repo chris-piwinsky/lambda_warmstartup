@@ -1,6 +1,6 @@
 # Warm Start
 
-Purpose of this project is to use Warm Start up to retrieve a value from lambda cache.  However, for cold start up we want to pull the values from S3, or the originating URL.
+Purpose of this project is to use Warm Start up to retrieve a value from lambda cache.  However, for cold start up we want to pull the values from DynamoDB, or the originating URL (in this case just using example.com).
 
 Also, want to setup an invalidation of local cache.
 
