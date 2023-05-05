@@ -6,6 +6,10 @@ Also, want to setup an invalidation of local cache.
 
 I use a data lookup to recreate the lambda_function.zip file so any code change will be picked up when deployed
 
+## Rough Topology
+
+![topology](./documentation/WarmStartup-Topology.png)
+
 ## Prerequisites
 Before you begin, make sure you have the following prerequisites:
 
