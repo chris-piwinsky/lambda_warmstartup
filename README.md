@@ -43,6 +43,26 @@ Before you begin, make sure you have the following prerequisites:
 * Run `terraform apply` to create the infrastructure on AWS.
 * When you are finished using the infrastructure, run `terraform destroy` to delete all the resources that Terraform created.
 
+## Running Lambda
+
+### Through AWS Console
+
+* Navigate to lambda console and select function
+* click on **test**
+* Select **Create new event** and use following JSON (id can be what you want)
+
+```json
+{
+  "id": 15
+}
+```
+
+* Click **Test**
+
+### Through AWS CLI
+
+* log into AWS through the CLI
+* run the following command ``
 
 ## Cache Flowchart
 
