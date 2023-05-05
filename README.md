@@ -25,6 +25,10 @@ I use a data lookup to recreate the lambda_function.zip file so any code change 
     * returns value
 
 
+## Cache Flowchart
+
+![logicflow](./documentation/FlowDiagram.png)
+
 ## Prerequisites
 Before you begin, make sure you have the following prerequisites:
 
@@ -62,11 +66,13 @@ Before you begin, make sure you have the following prerequisites:
 ### Through AWS CLI
 
 * log into AWS through the CLI
-* run the following command ``
+* run the following command `aws lambda invoke \
+--function-name warmstart \
+--payload '{"id": "15"}' \
+output.json
+`
 
-## Cache Flowchart
 
-![logicflow](./documentation/FlowDiagram.png)
 
 ## Resources
 
