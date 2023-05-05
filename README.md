@@ -10,6 +10,21 @@ I use a data lookup to recreate the lambda_function.zip file so any code change 
 
 ![topology](./documentation/WarmStartup-Topology.png)
 
+### Steps
+
+1. Actor invokes lambda passing in ID (number)
+2. Lambda checks local cache (warm start) variable see if it matches
+    * if yes returns value
+    * if no step 3
+3. Checks dynamo to see if in "system" cache
+    * if yes adds to local cache and returns value
+    * if no step 4
+4.  Calls API to retrieve ID and value
+    * adds to Dynamo (system cache)
+    * adds to local cache
+    * returns value
+
+
 ## Prerequisites
 Before you begin, make sure you have the following prerequisites:
 
