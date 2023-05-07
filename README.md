@@ -1,6 +1,9 @@
 # Warm Start
 
-Purpose of this project is to use Warm Start up to retrieve a value from lambda memory.  However, for cold start up we want to pull the values from DynamoDB (if they exist), and finally from the originating API/Source (in this case just using example.com).
+Purpose of this project is to use Warm Start up to retrieve a value from lambda memory.  
+However, for cold start where no local memory is existing yet we want to pull the values in order of:
+1. DynamoDB (if they exist)
+2. API/Source (in this case just using example.com).
 
 Also, want to setup an invalidation of the values in DynamoDB using TTL to simulate cache invaludation so can keep the data "fresh".  In this example I use 24 hour ttl on my dynamodb table.
 
