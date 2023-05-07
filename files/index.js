@@ -1,7 +1,7 @@
 let local_cache;
 const check_cache = require("./check_cache");
 
-async function isEmptyValues(value) {
+async function isEmptyValues(value) { 
   return (
     value === undefined ||
     value === null ||
@@ -39,6 +39,7 @@ exports.handler = async (event, context) => {
   } else if (local_cache.id === event.id) {
     console.log("Local cache value SAME AS ID PASSED IN");
   } else {
+    console.log("Cache exists but not value passed in")
     await getFromCache(event.id);
   }
   return {
