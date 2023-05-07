@@ -1,8 +1,9 @@
 # Warm Start
 
-Purpose of this project is to use Warm Start up to retrieve a value from lambda cache.  However, for cold start up we want to pull the values from DynamoDB, or the originating URL (in this case just using example.com).
+Purpose of this project is to use Warm Start up to retrieve a value from lambda memory.  However, for cold start up we want to pull the values from DynamoDB (if they exist), and finally from the originating API/Source (in this case just using example.com).
 
-Also, want to setup an invalidation of local cache.
+Also, want to setup an invalidation of the values in DynamoDB using TTL to simulate cache invaludation so can keep the data "fresh".  In this example I use 24 hour ttl on my dynamodb table.
+
 
 I use a data lookup to recreate the lambda_function.zip file so any code change will be picked up when deployed
 
@@ -13,15 +14,20 @@ I use a data lookup to recreate the lambda_function.zip file so any code change 
 ### Steps
 
 1. Actor invokes lambda passing in ID (number)
-2. Lambda checks local cache (warm start) variable see if it matches
-    * if yes returns value
-    * if no step 3
-3. Checks dynamo to see if in "system" cache
-    * if yes adds to local cache and returns value
-    * if no step 4
+2. Lambda checks local memory (warm start) variable see if it matches
+    * if yes 
+      * returns value
+    * if no 
+      * step 3
+3. Checks dynamodb to see if in "system" cache
+    * if yes:
+      * adds to local memory
+      * returns value
+    * if no 
+      * step 4
 4.  Calls API to retrieve ID and value
     * adds to Dynamo (system cache)
-    * adds to local cache
+    * adds to local memory
     * returns value
 
 
@@ -33,9 +39,8 @@ I use a data lookup to recreate the lambda_function.zip file so any code change 
 Before you begin, make sure you have the following prerequisites:
 
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) installed on your local machine.
-* An AWS account with sufficient privileges to create EC2 instances and security groups.
+* An AWS account.
 * AWS access key and secret key with sufficient permissions to create resources.
-
 
 ## Infrastructure Setup
 
@@ -71,8 +76,6 @@ Before you begin, make sure you have the following prerequisites:
 --payload '{"id": "15"}' \
 output.json
 `
-
-
 
 ## Resources
 
