@@ -19,7 +19,7 @@ async function getvalue(local_cache, id) {
     local_cache = {
       id: response.data.id,
       payload: response.data,
-      ttl: response.data.ttl,
+      ttl: getTTL(),
     };
     return local_cache;
   } catch (error) {

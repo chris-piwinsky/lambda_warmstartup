@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
   if (!local_cache) {
     console.log("IN local_cache");
     await getFromCache(event.id);
-  } else if (local_cache.id === event.id) {
+  } else if (local_cache.id === event.id && Date.now() / 1000 < local_cache.ttl) {
     console.log("Local cache value SAME AS ID PASSED IN");
   } else {
     console.log("Cache exists but not value passed in")
